@@ -5,9 +5,14 @@ dataset:
 
 train:
   optimizer: "Adam"
-  lr: 0.01
+  lr: 1e-3
   batch_size: 1000
   epochs: 1000
+
+  scheduler:
+    active: "True"
+    patience: 10
+
 
 save:
   model: "../experiments/"
