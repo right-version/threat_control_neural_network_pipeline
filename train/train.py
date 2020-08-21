@@ -1,5 +1,6 @@
 import os
 import torch
+from torch.utils.data import DataLoader
 import argparse
 from shutil import copyfile
 from data.traffic_data_generator import TrafficDataset
@@ -25,26 +26,29 @@ def main():
     args = parse_args()
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    print("device: {}".format(device))
 
     with open(args.config, "r") as f:
         config = yaml.safe_load(f)
 
     now = datetime.now()
     prefix = now.strftime("experiment_%d-%m-%Y_%H-%M-%S")
-    experiment_path = os.path.join(config["save"]["model"], prefix)
-    if not os.path.isdir(experiment_path):
-        os.makedirs(experiment_path)
+    # experiment_path = os.path.join(config["save"]["model"], prefix)
+    # if not os.path.isdir(experiment_path):
+    #     os.makedirs(experiment_path)
+    #
+    # copyfile(
+    #     args.config,
+    #     os.path.join(
+    #         experiment_path,
+    #         os.path.basename(args.config)
+    #     )
+    # )
 
-    copyfile(
-        args.config,
-        os.path.join(
-            experiment_path,
-            os.path.basename(args.config)
-        )
-    )
+    dataset_train = TrafficDataset(config["dataset"]["train_dataset"])
+    train_loader = DataLoader(dataset_train, batch_size=config["train"]["batch_size"])
 
-#    dataset_train = TrafficDataset(config["dataset"]["train_dataset"])
+    dataset_validation = TrafficDataset(config["dataset"]["validation_dataset"])
+    validation_loader = DataLoader(dataset_train, batch_size=config["train"]["batch_size"])
 
 
 if __name__ == '__main__':
