@@ -90,9 +90,19 @@ def main():
 
             loss += train_loss.item()
 
+        # Save model checkpoint
+        lr = get_lr(optimizer)
+        if epoch % config["save"]["every"] == 0:
+            torch.save({
+                "model_state_dict": model.cpu().state_dict(),
+                "epoch": epoch,
+                "lr": lr
+            }, os.path.join(
+                experiment_path, "model_epoch{}.pth".format(epoch)
+            ))
+
         # Epoch training loss
         loss = loss / len(train_loader)
-        lr = get_lr(optimizer)
         scheduler.step(loss)
 
         # Evaluate model on validation data
@@ -110,6 +120,16 @@ def main():
         val_loss = val_loss / len(validation_loader)
 
         print("epoch : {}/{}, loss = {:.6f}, val_loss = {:.6f}, lr={}".format(epoch + 1, epochs, loss, val_loss, lr))
+
+    # Save latest model checkpoint
+    lr = get_lr(optimizer)
+    torch.save({
+        "model_state_dict": model.cpu().state_dict(),
+        "epoch": epochs,
+        "lr": lr
+    }, os.path.join(
+        experiment_path, "model_latest.pth"
+    ))
 
 
 if __name__ == '__main__':
