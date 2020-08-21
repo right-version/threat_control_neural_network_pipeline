@@ -1,0 +1,14 @@
+dataset:
+  train_dataset: "../data/demo/benign_train.csv"
+  validation_dataset: "../data/demo/benign_test.csv"
+  test_dataset: ""
+
+train:
+  optimizer: "Adam"
+  lr: 0.01
+  batch_size: 1000
+  epochs: 1000
+
+save:
+  model: "../experiments/"
+  every: 10
