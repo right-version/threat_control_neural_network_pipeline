@@ -1,7 +1,9 @@
 dataset:
   train_dataset: "../data/demo/benign_train.csv"
   validation_dataset: "../data/demo/benign_test.csv"
-  test_dataset: ""
+  test_dataset: "../data/demo/syn_attack.csv"
+  __test_dataset: "../data/full_dataset/SimpleHome_XCS7_1002_WHT_Security_Camera/benign_traffic.csv"
+  _test_dataset: "../data/full_dataset/SimpleHome_XCS7_1002_WHT_Security_Camera/mirai_attacks/udp.csv"
 
 train:
   optimizer: "Adam"
