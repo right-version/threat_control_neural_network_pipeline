@@ -6,7 +6,6 @@ dataset:
   validation_dataset_bob: "../data/demo_federated/Provision_PT_737E_Security_Camera/benign_test.csv"
 
   test_dataset: "../data/demo/syn_attack.csv"
-  __test_dataset: "../data/full_dataset/SimpleHome_XCS7_1002_WHT_Security_Camera/benign_traffic.csv"
   _test_dataset: "../data/full_dataset/SimpleHome_XCS7_1002_WHT_Security_Camera/mirai_attacks/udp.csv"
 
 train:

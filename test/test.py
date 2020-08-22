@@ -7,7 +7,7 @@ from architectures.autoencoder import Autoencoder
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="Neural network inference script")
+    parser = argparse.ArgumentParser(description="Neural network testing script")
     parser.add_argument('--config', required=False, type=str,
                         default='../configs/default_train_config.yml',
                         help='Path to configuration yml file.'
