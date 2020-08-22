@@ -78,6 +78,7 @@ def main():
             optimizer.zero_grad()
 
             batch = batch.to(device)
+
             # Reconstruct input traffic features
             outputs = model(batch)
 
