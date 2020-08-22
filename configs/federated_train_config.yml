@@ -1,8 +1,8 @@
 dataset:
+  train_dataset_bob: "../data/demo_federated/Provision_PT_838_Security_Camera/benign_train.csv"
   train_dataset_alice: "../data/demo_federated/Provision_PT_737E_Security_Camera/benign_train.csv"
-  train_dataset_bob: "../data/demo_federated/Provision_PT_737E_Security_Camera/benign_train.csv"
 
-  validation_dataset_alice: "../data/demo_federated/Provision_PT_737E_Security_Camera/benign_test.csv"
+  validation_dataset_alice: "../data/demo_federated/Provision_PT_838_Security_Camera/benign_test.csv"
   validation_dataset_bob: "../data/demo_federated/Provision_PT_737E_Security_Camera/benign_test.csv"
 
   test_dataset: "../data/demo/syn_attack.csv"
@@ -11,7 +11,7 @@ dataset:
 
 train:
   optimizer: "Adam"
-  lr: 0.001
+  lr: 0.0001
   batch_size: 1000
   epochs: 10000
 
